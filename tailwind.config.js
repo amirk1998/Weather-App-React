@@ -7,7 +7,7 @@ export default {
         sans: ['Roboto'],
       },
       boxShadow: {
-        custom: '0 5px 10px rgba(0, 0, 0, 0.1)',
+        custom: '10px -2px 20px 2px rgba(0, 0, 0, 0.3)',
       },
     },
   },
