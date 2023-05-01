@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { AsyncPaginate } from 'react-select-async-paginate';
-import axios from 'axios';
 import { GEO_API_URL, geoApiOptions } from '../../services/api';
 
 const Search = ({ onSearchChange }) => {
@@ -12,7 +11,16 @@ const Search = ({ onSearchChange }) => {
       geoApiOptions
     )
       .then((response) => response.json())
-      .then((response) => console.log(response))
+      .then((response) => {
+        return {
+          options: response.data.map((city) => {
+            return {
+              value: `${city.latitude}  ${city.longitude}`,
+              label: `${city.name},${city.countryCode} `,
+            };
+          }),
+        };
+      })
       .catch((error) => console.log(error));
   };
 
